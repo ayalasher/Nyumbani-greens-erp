@@ -3,7 +3,9 @@
 import { useState } from "react";
 import Link from "next/link";
 import Image from "next/image";
-import { usePathname } from "next/navigation";
+import { usePathname, useRouter } from "next/navigation";
+import { useAuth } from "@/lib/auth-context";
+import { ProtectedRoute } from "@/components/protected-route";
 import {
   SidebarProvider,
   Sidebar,
@@ -33,6 +35,7 @@ import {
   User,
   ChevronDown,
   Search,
+  LogOut,
 } from "lucide-react";
 import {
   DropdownMenu,
@@ -93,6 +96,13 @@ export default function DashboardLayout({
   children: React.ReactNode;
 }) {
   const pathname = usePathname();
+  const router = useRouter();
+  const { user, logout } = useAuth();
+
+  const handleLogout = () => {
+    logout();
+    router.push('/login');
+  };
 
   return (
     <SidebarProvider defaultOpen>
@@ -146,12 +156,12 @@ export default function DashboardLayout({
                 <DropdownMenuTrigger asChild>
                   <SidebarMenuButton className="w-full">
                     <div className="flex h-7 w-7 items-center justify-center rounded-full bg-nyumbani-green text-xs font-semibold text-white">
-                      SM
+                      {user?.name.charAt(0).toUpperCase()}
                     </div>
                     <div className="flex flex-1 flex-col text-left group-data-[collapsible=icon]:hidden">
-                      <span className="text-sm font-medium">Sarah M.</span>
-                      <span className="text-xs text-muted-foreground">
-                        Manager
+                      <span className="text-sm font-medium">{user?.name}</span>
+                      <span className="text-xs text-muted-foreground capitalize">
+                        {user?.role}
                       </span>
                     </div>
                     <ChevronDown className="h-4 w-4 group-data-[collapsible=icon]:hidden" />
@@ -167,7 +177,8 @@ export default function DashboardLayout({
                     Settings
                   </DropdownMenuItem>
                   <DropdownMenuSeparator />
-                  <DropdownMenuItem className="text-destructive-foreground">
+                  <DropdownMenuItem onClick={handleLogout} className="text-red-400 cursor-pointer">
+                    <LogOut className="mr-2 h-4 w-4" />
                     Log out
                   </DropdownMenuItem>
                 </DropdownMenuContent>
@@ -208,7 +219,11 @@ export default function DashboardLayout({
         </header>
 
         {/* Main Content */}
-        <main className="flex-1 overflow-auto">{children}</main>
+        <main className="flex-1 overflow-auto">
+          <ProtectedRoute>
+            {children}
+          </ProtectedRoute>
+        </main>
       </SidebarInset>
     </SidebarProvider>
   );
