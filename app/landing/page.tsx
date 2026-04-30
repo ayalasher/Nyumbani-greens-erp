@@ -9,9 +9,6 @@ import {
   ShoppingCart,
   Factory,
   Package,
-  Zap,
-  Users,
-  Shield,
 } from 'lucide-react';
 
 export default function LandingPage() {
@@ -68,25 +65,7 @@ export default function LandingPage() {
     },
   ];
 
-  const benefits = [
-    {
-      icon: Zap,
-      title: 'Real-Time Operations',
-      description:
-        'Track every stage from farm to customer with live updates and instant alerts.',
-    },
-    {
-      icon: Shield,
-      title: 'Full Traceability',
-      description: 'Complete audit trail of every product batch with full cost allocation.',
-    },
-    {
-      icon: Users,
-      title: 'Role-Based Access',
-      description:
-        'Admin, Manager, and Operator roles with appropriate permissions and visibility.',
-    },
-  ];
+
 
   return (
     <div className="min-h-screen bg-background text-text-primary overflow-hidden">
@@ -165,7 +144,7 @@ export default function LandingPage() {
             </div>
           </div>
 
-          <div className="flex flex-col sm:flex-row gap-4 justify-center mb-12">
+          <div className="flex flex-col sm:flex-row gap-4 justify-center">
             <Link
               href="/login"
               className="inline-flex items-center justify-center gap-2 px-8 py-4 bg-nyumbani-green text-white font-semibold rounded-full hover:bg-nyumbani-green/90 transition-all duration-200 hover:scale-105"
@@ -179,28 +158,6 @@ export default function LandingPage() {
             >
               Explore System
             </a>
-          </div>
-
-          {/* Demo Accounts Info */}
-          <div className="bg-neutral-900/50 border border-border rounded-lg p-6 max-w-2xl mx-auto">
-            <p className="text-sm text-text-muted mb-4 font-semibold">Try Demo With These Accounts</p>
-            <div className="grid grid-cols-1 sm:grid-cols-3 gap-4 text-left">
-              <div className="bg-neutral-950/50 rounded p-3 border border-border/50">
-                <p className="font-mono text-xs text-nyumbani-green mb-1">demo@nyumbani.com</p>
-                <p className="text-xs text-text-muted">Pass: demo123</p>
-                <p className="text-xs text-text-muted mt-1">Admin Access</p>
-              </div>
-              <div className="bg-neutral-950/50 rounded p-3 border border-border/50">
-                <p className="font-mono text-xs text-nyumbani-green mb-1">manager@nyumbani.com</p>
-                <p className="text-xs text-text-muted">Pass: manager123</p>
-                <p className="text-xs text-text-muted mt-1">Manager Access</p>
-              </div>
-              <div className="bg-neutral-950/50 rounded p-3 border border-border/50">
-                <p className="font-mono text-xs text-nyumbani-green mb-1">operator@nyumbani.com</p>
-                <p className="text-xs text-text-muted">Pass: operator123</p>
-                <p className="text-xs text-text-muted mt-1">Operator Access</p>
-              </div>
-            </div>
           </div>
         </div>
       </section>
@@ -328,131 +285,8 @@ export default function LandingPage() {
         </div>
       </section>
 
-      {/* What You Can Do Section */}
-      <section className="py-20 px-4 sm:px-6 lg:px-8 bg-neutral-950/50 border-t border-border">
-        <div className="mx-auto max-w-6xl">
-          <div className="text-center mb-16">
-            <h2 className="text-4xl font-bold mb-4">What You Can Do Inside</h2>
-            <p className="text-xl text-text-muted">Upon login, you'll have full access to:</p>
-          </div>
 
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
-            {[
-              {
-                title: '📋 Sourcing Module',
-                items: [
-                  'Create and manage Product Orders (POs)',
-                  'Track line items with individual costs',
-                  'Monitor payment statuses',
-                  'View supplier information and history',
-                  'Multi-supplier order management',
-                ]
-              },
-              {
-                title: '🏭 Production Module',
-                items: [
-                  'Track batch progression through 4 stages',
-                  'Record intake, grading & quality control',
-                  'Track processing and packaging',
-                  'Monitor variance and discrepancies',
-                  'Record wastage per product type',
-                ]
-              },
-              {
-                title: '📦 Inventory Module',
-                items: [
-                  'Monitor punnet-level stock by batch',
-                  'View freshness indicators',
-                  'Record shrinkage and wastage',
-                  'Manage stock alerts and thresholds',
-                  'Issue batches to Zoho for sales',
-                ]
-              },
-              {
-                title: '🔄 Zoho Integration',
-                items: [
-                  'Sync completed batches to Zoho CRM',
-                  'Manage SKU mappings and variants',
-                  'Track sales order fulfillment',
-                  'Monitor stock issues and exceptions',
-                  'View sync logs and error reconciliation',
-                ]
-              },
-              {
-                title: '💰 Cost Management',
-                items: [
-                  'Define and manage cost categories',
-                  'Allocate costs by sourcing & production',
-                  'Calculate COGS per batch',
-                  'Track contribution margins',
-                  'Compare unit costs across batches',
-                ]
-              },
-              {
-                title: '📊 Reports & Analytics',
-                items: [
-                  'View rolling KPIs and performance metrics',
-                  'Compare multiple batches side-by-side',
-                  'Analyze product trends and seasonality',
-                  'Export financial summaries',
-                  'Track historical batch data',
-                ]
-              },
-            ].map((section, idx) => (
-              <div key={idx} className="bg-neutral-900/50 border border-border rounded-lg p-8">
-                <h3 className="text-lg font-semibold mb-4 text-nyumbani-green">{section.title}</h3>
-                <ul className="space-y-3">
-                  {section.items.map((item, itemIdx) => (
-                    <li key={itemIdx} className="flex items-start gap-3">
-                      <svg className="w-5 h-5 text-harvest-gold flex-shrink-0 mt-0.5" fill="currentColor" viewBox="0 0 20 20">
-                        <path fillRule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clipRule="evenodd" />
-                      </svg>
-                      <span className="text-text-muted">{item}</span>
-                    </li>
-                  ))}
-                </ul>
-              </div>
-            ))}
-          </div>
 
-          <div className="mt-16 bg-nyumbani-green/10 border border-nyumbani-green/30 rounded-lg p-8 text-center">
-            <h3 className="text-2xl font-bold mb-4">Ready to See It In Action?</h3>
-            <p className="text-text-muted mb-6 max-w-2xl mx-auto">
-              Sign in with any of the demo accounts above to explore all modules and features. No credit card required—just login and start exploring!
-            </p>
-            <Link
-              href="/login"
-              className="inline-flex items-center justify-center gap-2 px-8 py-4 bg-nyumbani-green text-white font-semibold rounded-full hover:bg-nyumbani-green/90 transition-all duration-200 hover:scale-105"
-            >
-              Enter Dashboard
-              <ArrowRight size={20} />
-            </Link>
-          </div>
-        </div>
-      </section>
-      <section className="py-20 px-4 sm:px-6 lg:px-8">
-        <div className="mx-auto max-w-6xl">
-          <div className="text-center mb-16">
-            <h2 className="text-4xl font-bold mb-4">Why Nyumbani Greens ERP?</h2>
-            <p className="text-xl text-text-muted">Built for farm-to-customer food operations</p>
-          </div>
-
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-            {benefits.map((benefit, index) => {
-              const Icon = benefit.icon;
-              return (
-                <div key={index} className="text-center">
-                  <div className="mb-4 inline-flex p-4 bg-neutral-900 rounded-lg border border-border">
-                    <Icon className="h-6 w-6 text-harvest-gold" />
-                  </div>
-                  <h3 className="text-lg font-semibold mb-2">{benefit.title}</h3>
-                  <p className="text-text-muted">{benefit.description}</p>
-                </div>
-              );
-            })}
-          </div>
-        </div>
-      </section>
 
       {/* CTA Section */}
       <section className="py-20 px-4 sm:px-6 lg:px-8 border-t border-border bg-neutral-950/50">
@@ -461,23 +295,6 @@ export default function LandingPage() {
           <p className="text-xl text-text-muted mb-8">
             No signup required. All modules are fully functional in the demo. Create orders, track batches, manage inventory, and see real-time operations in action.
           </p>
-          <div className="bg-neutral-900/50 border border-border rounded-lg p-6 mb-8">
-            <p className="text-sm text-text-muted mb-3">Select a demo account:</p>
-            <div className="grid grid-cols-3 gap-2 text-xs">
-              <div className="bg-neutral-950 rounded p-2 border border-border/50">
-                <span className="text-nyumbani-green font-mono">demo@</span><br/>
-                <span className="text-text-muted">demo123</span>
-              </div>
-              <div className="bg-neutral-950 rounded p-2 border border-border/50">
-                <span className="text-nyumbani-green font-mono">manager@</span><br/>
-                <span className="text-text-muted">manager123</span>
-              </div>
-              <div className="bg-neutral-950 rounded p-2 border border-border/50">
-                <span className="text-nyumbani-green font-mono">operator@</span><br/>
-                <span className="text-text-muted">operator123</span>
-              </div>
-            </div>
-          </div>
           <Link
             href="/login"
             className="inline-flex items-center justify-center gap-2 px-8 py-4 bg-nyumbani-green text-white font-semibold rounded-full hover:bg-nyumbani-green/90 transition-all duration-200 hover:scale-105"
