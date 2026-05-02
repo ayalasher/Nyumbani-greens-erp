@@ -236,7 +236,9 @@ export default function LandingPage() {
                       </div>
                     </div>
                     <h3 className="text-lg font-medium mb-2">{item.title}</h3>
-                    <p className="text-text-muted flex-grow">{item.description}</p>
+                    <p className="text-text-muted flex-grow">
+                      {item.description}
+                    </p>
                   </div>
                 </div>
               );
@@ -297,11 +299,11 @@ export default function LandingPage() {
               Access these features after logging in with your demo account
             </p>
             <div className="inline-block px-4 py-2 bg-nyumbani-green/10 border border-nyumbani-green/30 rounded-full">
-                <span className="text-sm text-nyumbani-green font-medium flex items-center gap-2">
-                  <Shield className="h-4 w-4 text-nyumbani-green" />
-                  All modules require authentication
-                </span>
-              </div>
+              <span className="text-sm text-nyumbani-green font-medium flex items-center gap-2">
+                <Shield className="h-4 w-4 text-nyumbani-green" />
+                All modules require authentication
+              </span>
+            </div>
           </div>
 
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
